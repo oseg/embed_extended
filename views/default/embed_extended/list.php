@@ -39,6 +39,14 @@ $dbprefix = elgg_get_config('dbprefix');
 if ($type == ELGG_ENTITIES_ANY_VALUE || $type == 'object') {
 	if ($subtype == ELGG_ENTITIES_ANY_VALUE) {
 		$subtypes = get_registered_entity_types('object');
+		
+		// Remove 'comment' subtype because comments don't have a title
+		foreach ($subtypes as $key => $value) {
+			if ($value == 'comment') {
+				unset($subtypes[$key]);
+				break;
+			}
+		}
 	} else {
 		$subtypes = [$subtype];
 	}

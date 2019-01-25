@@ -10,6 +10,14 @@ $container = elgg_extract('container', $vars, elgg_get_logged_in_user_entity());
 $content_options = [];
 $content_types = get_registered_entity_types();
 if (!empty($content_types)) {
+	// Remove 'comment' subtype because comments don't have a title
+	foreach ($content_types['object'] as $key => $value) {
+		if ($value == 'comment') {
+			unset($content_types['object'][$key]);
+			break;
+		}
+	}	
+	
 	$content_options = [ELGG_ENTITIES_ANY_VALUE => elgg_echo('all')];
 	
 	foreach ($content_types as $type => $subtypes) {
