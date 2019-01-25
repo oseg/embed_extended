@@ -1,5 +1,9 @@
+.embed-wrapper {
+	width: 600px !important;
+}
+
 .elgg-form-embed-extended-internal-content input[type='text'] {
-	width: 450px;
+	width: 370px;
 }
 
 .elgg-form-embed-extended-internal-content select {
