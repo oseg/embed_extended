@@ -75,10 +75,10 @@ define(['jquery', 'elgg', 'elgg/lightbox', 'elgg/embed'], function($, elgg, ligh
 	};
 	
 	var move_lighbox_content = function() {
-		
+		var cboxLoadedContentStyle = $('#cboxLoadedContent').attr('style');
 		$('#cboxLoadedContent').attr('id', 'cboxOriginalContent').hide();
 		$('#cboxOriginalContent').after('<div id="cboxLoadedContent"></div>');	
-		
+		$('#cboxLoadedContent').attr('style', cboxLoadedContentStyle);
 		$('#cboxLoadingOverlay').show();
 		
 		$('#cboxClose').unbind();
@@ -90,7 +90,19 @@ define(['jquery', 'elgg', 'elgg/lightbox', 'elgg/embed'], function($, elgg, ligh
 			move_lighbox_content();
 			
 			var href = $(this).attr('href');
-			elgg.get(href, {
+			
+			var hrefWithParams;
+			try {
+				var obj = JSON.parse($(this).attr('data-colorbox-opts'));
+				hrefWithParams = obj.href;
+				if (hrefWithParams === undefined) {
+					hrefWithParams = href;
+				}
+			} catch(e) {
+				hrefWithParams = href;
+			}
+			
+			elgg.get(hrefWithParams, {
 				success: function(data) {
 					
 					$('#cboxLoadedContent').html(data);
@@ -99,7 +111,8 @@ define(['jquery', 'elgg', 'elgg/lightbox', 'elgg/embed'], function($, elgg, ligh
 					$(document).off('click', '.embed-item');
 					$(document).on('click', '.embed-item', insert);
 					
-					$.colorbox.resize();
+					// Do not update colorbox size
+					//$.colorbox.resize();
 				}
 			});
 		} else {
