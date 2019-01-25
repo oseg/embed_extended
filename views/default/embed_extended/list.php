@@ -42,6 +42,11 @@ if ($type == ELGG_ENTITIES_ANY_VALUE || $type == 'object') {
 	} else {
 		$subtypes = [$subtype];
 	}
+		
+	// add top pages
+	if (in_array('page', $subtypes)) {
+		$subtypes[] = 'page_top';
+	}
 
 	$objects = elgg_get_entities([
 		'type' => 'object',
