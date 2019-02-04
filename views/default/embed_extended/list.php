@@ -6,6 +6,9 @@
  * @uses $vars['item_class']  Additional CSS class for the <li> elements
  */
 
+// 'embed' context required to substitute thumbnail's inline URL by permanent URL
+elgg_push_context('embed');
+
 $q = sanitise_string(get_input('q'));
 $type_subtype = get_input('type_subtype');
 $match_owner = (int) get_input('match_owner');
@@ -145,3 +148,5 @@ foreach ($entities as $entity) {
 }
 
 echo elgg_format_element('ul', ['class' => $list_class], $list_items);
+
+elgg_pop_context('embed');
