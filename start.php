@@ -18,7 +18,7 @@ function embed_extended_init() {
 	elgg_extend_view('css/admin', 'css/embed_extended.css');
 	
 	// register page handler
-	elgg_register_ajax_view('embed_extended/list', 'embed_extended_page_handler');
+	elgg_register_ajax_view('embed_extended/list');
 	
 	// register plugin hooks
 	elgg_register_plugin_hook_handler('register', 'menu:embed', '\ColdTrick\EmbedExtended\Menus::embedMenuRegister');
