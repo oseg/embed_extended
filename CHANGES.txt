@@ -1,6 +1,15 @@
 Version history
 ===============
 
+2.0.2.1 (2019-02-26):
+
+- changed: report some embed changes included in elgg 2.3.x
+- fixed: wrong url embedding from "Search for content" form issue 
+- fixed: issues with embed lightbox opened in another lightbox
+- changed: synchronise embed lightbox width on widget setting lightbox width
+- fixed: remove 'comment' subtype from the content type list
+- fixed: add missing top pages in the search results
+
 2.0.2 (2017-02-27):
 
 - fixed: groups were not include in the search results
