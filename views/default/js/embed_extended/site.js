@@ -38,7 +38,7 @@ define(['jquery', 'elgg', 'elgg/lightbox', 'elgg/embed'], function($, elgg, ligh
                 // this is a temporary work-around for #3971
                 if (content.indexOf('/serve-icon/') != -1) {
                         content = content.replace(/\/serve-icon\/[0-9]*\/small/g, function replacer(match) {
-                                return match.replace('small', 'medium');
+                                return match.replace('small', 'large');
                         });
                 }
 	
